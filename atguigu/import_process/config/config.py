@@ -37,3 +37,10 @@ class BGEM3Config:
     # 是否使用半精度（True/False）1=开启（GPU加速更高效），0=关闭（兼容低版本GPU/CPU）
     # 注意：.env 里读出来是字符串，"False" 在 Python 中也是真值，必须显式转换
     bge_fp16 = os.getenv('BGE_FP16', 'False').strip().lower() in ('1', 'true', 'yes', 'on')
+
+class MongoConfig:
+    mongo_url = os.getenv('MONGO_URL')
+    # 数据库名
+    mongo_db_name = os.getenv('MONGO_DB_NAME')
+    mongo_host = os.getenv('MONGO_HOST')
+    mongo_port = int(os.getenv('MONGO_PORT'))
