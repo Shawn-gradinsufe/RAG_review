@@ -1,5 +1,6 @@
 # atguigu/query_process/nodes/node_item_name_confirm.py
 
+#导包规则：1、先导系统包 2、再导三方包 3、再导自定义包
 import json
 from typing import Any
 
@@ -32,7 +33,7 @@ class NodeItemNameConfirm(NodeBase):
         # 1、获取state给的初始化数据，查询mongo拿到历史记录整理成字符串
         history_str, message_id, original_query, session_id = self.get_history_str(state)
 
-        # 2、根据历史记录和原始问题，调用大模型提取商品名称和重写的问题
+        # 2、根据历史记录和原始问题，调用大模型提取商品名称和重写的问题,大模型做的意图识别,识别用户的问题是要做什么
         item_names, rewritten_query = self.get_item_names(history_str, original_query)
 
         # 3、向量化检索，遍历大模型得到识别的商品名称，一个一个去混合检索Milvus当中相似的item_names整理在列表
@@ -57,6 +58,7 @@ class NodeItemNameConfirm(NodeBase):
             "original_query": original_query,
             "answer":answer,
             "item_names":final_item_names,
+            # 检索节点state中的item_names已经变成了意图识别的结果,是大模型识别出的结果经milvus中商品名称collection匹配后确认匹配的
             "rewritten_query": rewritten_query,
             "history": get_recent_messages(session_id) # 这里必须重新获取历史记录，否则拿的还是回填前的历史记录
         }

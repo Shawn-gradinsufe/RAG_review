@@ -133,7 +133,7 @@ class NodePDFToMD(NodeBase):
             "model_version": "vlm"
         }
         file_path = [local_file_path]
-
+        
         # 至此需要发送的请求报文已经好了，下面是需要对响应进行判断
         # 请求是否成功？
         response = requests.post(url, headers=header, json=data)

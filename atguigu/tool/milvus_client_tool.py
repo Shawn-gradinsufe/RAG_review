@@ -60,7 +60,7 @@ def hybrid_search(
         collection_name, # str
         reqs, # 混合检索请求，列表形式，List[AnnSearchRequest]
         limit=10,
-        output_fields=None, # List[str]
+        output_fields=None, # List[str] #
         ranker=(0.5,0.5) # BaseRanker或是Function
 ):
     weighted_ranker = WeightedRanker(*ranker) # 继承BaseRanker类

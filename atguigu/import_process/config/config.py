@@ -44,3 +44,7 @@ class MongoConfig:
     mongo_db_name = os.getenv('MONGO_DB_NAME')
     mongo_host = os.getenv('MONGO_HOST')
     mongo_port = int(os.getenv('MONGO_PORT'))
+
+class McpConfig:
+    mcp_base_url = os.getenv('MCP_BASE_URL')
+    mcp_api_key = os.getenv('MCP_API_KEY')
