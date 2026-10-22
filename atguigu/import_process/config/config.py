@@ -48,3 +48,7 @@ class MongoConfig:
 class McpConfig:
     mcp_base_url = os.getenv('MCP_BASE_URL')
     mcp_api_key = os.getenv('MCP_API_KEY')
+
+class RerankConfig:
+    rerank_base_url = os.getenv('RERANK_BASE_URL')
+    rerank_api_key = os.getenv('RERANK_API_KEY')

@@ -44,7 +44,7 @@ class NodeSearchEmbedding(NodeBase):
         item_names = [
             item_name.replace("\\","\\\\").replace("\'","\\'").replace('\"','\\"')
             for item_name in item_names
-        ]
+        ] 
         #
         expr = f"item_name in {json_format(item_names)}"
         # expr = f"item_name in {item_names}"# 也可以,但是json_format的好处是防止万一里面有特殊字符导致解析出错
@@ -55,7 +55,7 @@ class NodeSearchEmbedding(NodeBase):
             dense_anns_field= "dense_vector",
             sparse_data = [sparse_data],
             sparse_anns_field= "sparse_vector",
-            expr = expr,
+            expr = expr,  # 向量检索,标量过滤
         ) # 返回两个检索请求的实例组成的列表，是混合检索的参数
 
         # 混合检索
@@ -64,7 +64,7 @@ class NodeSearchEmbedding(NodeBase):
             reqs = reqs,
             output_fields=["id","title","file_title","content","part","item_name"],
             # 检索结果中需要返回的字段，这和之前在向量数据库中存了什么字段有关系，因为现在检索的是chunks_collection集合，所以这里要和存的时候对应
-            ranker=(0.6,0.4) 
+            ranker=(0.6,0.4)
         )
 
         # print(res,type(res))

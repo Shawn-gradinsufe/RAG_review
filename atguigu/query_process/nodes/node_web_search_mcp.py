@@ -31,7 +31,8 @@ class NodeWebSearchMcp(NodeBase):
             logger.error("改写后的用户问题不能为空")
             raise ValueError("改写后的用户问题不能为空")
 
-        result = asyncio.run(self.mcp_run(rewritten_query))
+        result = asyncio.run(self.mcp_run(rewritten_query)) # run是事件循环开始的标志
+
         # print(result,type(result))
         # # 调用协程函数,传入协程对象,
         # # .run()方法创建事件循环,运行事件循环,把协程对象加入事件循环

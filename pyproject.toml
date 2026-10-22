@@ -24,6 +24,7 @@ dependencies = [
     "modelscope>=1.40.2",
     "openai-agents>=0.24.0",
     "mcp==1.29",
+    "dashscope>=1.27.8",
 ]
 
 [tool.uv.sources]

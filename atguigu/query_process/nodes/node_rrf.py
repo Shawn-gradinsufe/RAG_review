@@ -21,6 +21,7 @@ class NodeRrf(NodeBase):
         :return: 更新后的状态对象
         """
         embedding_chunks = state.get("embedding_chunks")
+        # 是个列表
         hyde_embedding_chunks = state.get("hyde_embedding_chunks")
 
         # 设定权重值 分子自行设定
