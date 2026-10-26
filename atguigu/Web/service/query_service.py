@@ -67,7 +67,7 @@ def query(background_tasks:BackgroundTasks
     task_id = str(uuid.uuid4())
 
     # 添加后台任务执行graph去检索
-    background_tasks.add_task(run_main_graph, query, session_id)
+    background_tasks.add_task(run_main_graph, query, session_id,task_id)
 
     return {"task_id":task_id}
 
