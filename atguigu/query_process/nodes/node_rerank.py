@@ -79,7 +79,7 @@ class NodeRerank(NodeBase):
 
         break_idx = use_max_topk
 
-        for i in range(0,use_max_topk-1):
+        for i in range(0,use_max_topk-1): # 实际这边怎么样都可以，既可以严格保留固定条数，具体和业务方敲定
             current_score = rerank_chunks[i].get('score')
             next_score = rerank_chunks[i+1].get('score')
             # 计算当前分数与下一个分数的差值，并判断是否满足断崖条件

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>我爱你杨幂</h1>
+    <p>我爱你杨幂我爱你杨幂我爱你杨幂我爱你杨幂我爱你杨幂我爱你杨幂</p>
+
+
+    <button id="btn">点击我发请求</button>
+
+
+    <script>
+        // 这里就是写js代码的地方
+        // 点击按钮的时候发送ajax请求
+        // 1.获取事件源,事件源是按钮 2.添加事件监听(事件类型,鼠标点击,滑动,按住,抬起就是事件类型) 3.回调函数(事件发生要干什么),浏览器内核调用,不是代码手动调用的
+        const btn = document.getElementById("btn")
+
+        btn.onclick = async function () {
+            const res = await fetch("http://localhost:8000/hello")
+            const data = await res.json()
+            console.log(data)
+        }
+
+
+
+
+    </script>
+
+
+</body>
+</html>

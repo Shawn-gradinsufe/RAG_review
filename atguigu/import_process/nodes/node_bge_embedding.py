@@ -25,7 +25,7 @@ class NodeBGEEmbedding(NodeBase):
         for i in range(0,len(chunks),3):
             chunk_k_list = chunks[i:i+3]
             # 整理双向量化的字符串列表
-            chunk_k_str_list = [f"{item.get("item_name")}\n{item.get("content")}" for item in chunk_k_list]
+            chunk_k_str_list = [f"{item.get('item_name')}\n{item.get('content')}" for item in chunk_k_list]
             embeddings = get_bge_embedding(chunk_k_str_list)
 
             # 我们向量化结束主要就是把每个内容对应的向量回填到对应的chunk中

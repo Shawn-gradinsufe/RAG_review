@@ -1,6 +1,5 @@
 # 专门给mongodb的操作做封装，后期操作mongo的增删改查全部对应这个文件中的一个函数
 # 1、获取单例的mongo链接对象
-import pymongo
 import time
 from pymongo import MongoClient
 

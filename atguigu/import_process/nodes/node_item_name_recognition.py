@@ -48,8 +48,8 @@ class NodeItemNameRecognition(NodeBase):
         # 加载到表中
         milvus_client.load_collection(MilvusConfig.item_name_collection)
         # 为了让过滤条件字符串不出现语法错误，需要把一些特殊字符进行替换
-        file_title = file_title.replace("\\", "\\\\").replace("\'", "\\'").replace('\"', '\\"')
-        filter = f"file_title== '{file_title}'"
+        safe_title = file_title.replace("\\", "\\\\").replace("\'", "\\'").replace('\"', '\\"')
+        filter = f"file_title== '{safe_title}'"
         # 这里需要用单引号'包裹{file_title}，因为如果不包裹的结果，Milvus无法将没有引号包裹的Hak180烫金机识别为字符串字面量，导致表达式解析错误
         milvus_client.delete(
             collection_name=MilvusConfig.item_name_collection,
