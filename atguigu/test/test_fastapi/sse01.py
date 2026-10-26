@@ -11,8 +11,6 @@
 # 4.服务端需要写SSE回复接口,流式返回,流式返回就是把一个生成器对象返回
 # 生成器函数当中就是从queue_dict当中获取自己session_id的队列,从队列当中一个一个yield邮件
 
-
-
 import time
 import uvicorn
 

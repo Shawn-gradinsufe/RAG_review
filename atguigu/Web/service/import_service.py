@@ -48,7 +48,6 @@ def run_main_graph(task_id:str,local_dir:str,local_file_path:str):
 def upload(background_tasks: BackgroundTasks,file: UploadFile = File(...)):
     task_id = str(uuid.uuid4())
 
-
     add_running_task(task_id, "upload_file")
     start_time = time.time()
     #暂存

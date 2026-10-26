@@ -1,5 +1,7 @@
+import time
 from collections import defaultdict
-from typing import Dict, List
+from queue import Queue
+from typing import Dict, List, Any
 
 # ---------------------------
 # 内存态任务追踪（单进程）
@@ -138,7 +140,7 @@ def get_task_status(task_id: str ) -> str:
     # 安全获取指定任务的总体运行状态，若不存在则返回空字符串
     return _tasks_status.get(task_id, "")
 
-def get_task_info(task_id: str) -> Dict[str, any]:
+def get_task_info(task_id: str) -> Dict[str, Any]:
     """
     获取任务的全局信息（状态 + 运行中节点 + 已完成节点）
     :param task_id: 任务ID
@@ -150,3 +152,25 @@ def get_task_info(task_id: str) -> Dict[str, any]:
         "done_list": get_done_task_list(task_id),
         "durations": get_node_durations(task_id)
     }
+
+# 对队列的操作 1、创建队列 2、查询数据 3、添加数据
+q_dict = {}
+
+def create_queue(task_id:str):
+    if task_id not in q_dict:
+        q_dict[task_id] = Queue()
+    return q_dict[task_id]
+
+def put_data(task_id,event,data):
+    while not q_dict.get(task_id):
+        time.sleep(1)
+
+    q = q_dict.get(task_id)
+    q.put({"event":event,"data":data})
+
+def get_data(task_id):
+    while not q_dict.get(task_id):
+        time.sleep(1)
+
+    q = q_dict.get(task_id)
+    return q.get()
